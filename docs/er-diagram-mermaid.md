@@ -2,9 +2,8 @@
 
 ```mermaid
 erDiagram
-    AUTH_USERS ||--o| PROFILES : has
+    AUTH_USERS ||--|| PROFILES : owns
     AUTH_USERS ||--o{ POSTS : creates
-    AUTH_USERS ||--o{ AUDIT_LOGS : acts
 
     AUTH_USERS {
         uuid id PK
@@ -29,17 +28,14 @@ erDiagram
         timestamptz created_at
         timestamptz updated_at
     }
-
-    AUDIT_LOGS {
-        uuid id PK
-        uuid actor_user_id FK
-        text action
-        text target_type
-        uuid target_id
-        jsonb metadata
-        timestamptz created_at
-    }
 ```
+
+## 補足
+
+- `AUTH_USERS` は Supabase Auth の `auth.users` を表す
+- `PROFILES.user_id` は `AUTH_USERS.id` に対する一意な外部キーで、1 ユーザー 1 プロフィール
+- `POSTS.user_id` は `AUTH_USERS.id` に対する外部キーで、1 ユーザーが複数投稿を持つ
+- `posts.status` の取り得る値は `draft`、`published`、`archived`
 
 ## draw.io 取込手順
 
