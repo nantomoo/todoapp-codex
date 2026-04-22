@@ -46,29 +46,12 @@ node serve.js
 
 起動後は `http://localhost:8000/` にアクセスします。
 
-## Supabase 接続設定
-
-`config.js` に Supabase の接続情報を設定します。
-
-```js
-window.APP_CONFIG = {
-  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
-  supabaseAnonKey: "YOUR_SUPABASE_PUBLISHABLE_KEY",
-};
-```
-
-補足:
-
-- 現行コードは `supabaseAnonKey` というキー名を使用しています
-- ここに設定する値は Supabase の `Publishable key` です
-- `supabaseUrl` と `supabaseAnonKey` の両方が揃わない場合は `demo mode` で起動します
-
 ## Supabase 側の準備
 
 1. Supabase でプロジェクトを作成する
 2. `Authentication` の Email プロバイダを有効にする
 3. `SQL Editor` で [supabase/init.sql](/C:/Program AI/todoapp-codex/supabase/init.sql) を実行する
-4. `Project URL` と `Publishable key` を [config.js](/C:/Program AI/todoapp-codex/config.js) に設定する
+4. フロント側の接続設定を行う
 
 詳細は [docs/supabase-setup.md](/C:/Program AI/todoapp-codex/docs/supabase-setup.md) を参照してください。
 
